@@ -1,8 +1,10 @@
 # openLCA web UI
 
-- [ ] Create a simple browser router
-- [ ] Add a navigation bar
-- [ ] Add a header with an `Outlet`
+- [X] Create a simple browser router
+- [X] Add a navigation bar
+- [X] Add a header with an `Outlet`
+- [X] Create a form for calculation
+- [X] Navigate to result with search params
 - [ ] Add the loader functions
 
 ## Available Scripts

@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import CalculationForm from "./calculation-form";
+import Calculation from "./calculation";
 
-type SystemParams = {
+export type SystemParams = {
   uuid: string;
 };
 
@@ -12,7 +12,7 @@ const SystemPage = () => {
   return (
     <div>
       <h3>Product System {uuid}</h3>
-      <CalculationForm uuid={uuid || ""} />
+      <Calculation />
     </div>
   )
 };
