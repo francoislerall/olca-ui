@@ -19,6 +19,7 @@ const Calculation = () => {
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
     const { name, value, type, checked } = e.currentTarget;
+
     if (Object.keys(state).includes(name)) {
       setState({
         ...state,
@@ -41,13 +42,9 @@ const Calculation = () => {
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
     const query = createSearchParams([
-      ["impactAssessmentMethod", state.impactAssessmentMethod],
-      ["withRegionalization", `${state.withRegionalization}`],
+      ["method", state.impactAssessmentMethod],
+      ["regio", `${state.withRegionalization}`],
     ])
-    console.log("Here")
-    console.log(query.toString())
-    console.log(state.withRegionalization)
-    console.log(state.impactAssessmentMethod)
     navigate({
       pathname: `/results/${uuid}/`,
       search: query.toString()

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Comparison = () => {
+const ComparisonPage = () => {
   return (
     <div>
       <h1>Comparison</h1>
@@ -8,4 +8,4 @@ const Comparison = () => {
   )
 };
 
-export default Comparison;
+export default ComparisonPage;

@@ -6,8 +6,8 @@ const ResultsPage = () => {
   const { uuid } = useParams();
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const impactAssessmentMethod = searchParams.get("impactAssessmentMethod")
-  const withRegionalization = searchParams.get("withRegionalization")
+  const impactAssessmentMethod = searchParams.get("method")
+  const withRegionalization = searchParams.get("regio")
 
 
   return (

@@ -3,14 +3,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/home/home";
 import SystemsPage from "./pages/systems/systems-page";
 import SystemPage from "./pages/system/system-page";
-import Root from "./components/root";
+import RootLayout from "./components/root-layout";
 import ResultsPage from "./pages/results/results-page";
-import Comparison from "./pages/comparison/comparison";
+import ComparisonPage from "./pages/comparison/comparison";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <RootLayout />,
     children: [
       {
         index: true,
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: "comparison",
-        element: <Comparison />,
+        element: <ComparisonPage />,
       },
       {
         path: "results/:uuid",
