@@ -1,16 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
+
+export function loader() {
+  return [1, 2, 3, 4];
+};
 
 const SystemsPage = () => {
+  const data = useLoaderData() as ReturnType<typeof loader>;
+
   return (
     <div>
       <h1>List of the product systems</h1>
       <ul>
         {
-          [1, 2, 3, 4].map(uuid => {
+          data.map(uuid => {
             return (
-              <li style={{ listStyle: "none" }}>
+              <li key={uuid} style={{ listStyle: "none" }}>
                 <Link to={`/systems/${uuid}`}>
                   Product system {uuid}
                 </Link>
