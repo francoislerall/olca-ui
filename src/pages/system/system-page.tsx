@@ -1,57 +1,64 @@
-import React from "react";
-import { useParams, useLoaderData, Form } from "react-router-dom";
+import React, { Suspense } from "react";
+import { useParams, useLoaderData, defer, Await, LoaderFunction } from "react-router-dom";
+import SystemForm from "./components/form";
+import { LoaderData } from "../../type";
 
 
-export function loader() {
+type SystemData = {
+  flow: string,
+  amount: number,
+  unit: string,
+}
+
+type SystemParams = {
+  uuid: string;
+};
+
+const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+
+const fakeFetch = async (uuid: string) => {
+  await sleep(+uuid * 200);
   return {
     flow: "flour",
     amount: 42.0,
     unit: "kg",
-  }
+  } as SystemData;
 }
 
-export type SystemParams = {
-  uuid: string;
-};
+export const loader = (async ({ params }) => {
+  const { uuid } = params;
+
+  if (+(uuid || "0") > 3) {
+    throw new Error("There is not such a product system.");
+  };
+
+  return defer({ data: fakeFetch(uuid || "0") });
+}) satisfies LoaderFunction;
 
 const SystemPage = () => {
   const { uuid } = useParams<SystemParams>();
-  const { flow, amount, unit } = useLoaderData() as ReturnType<typeof loader>;
+
+  const { data } = useLoaderData() as LoaderData<typeof loader>;
+
+  const renderForm = (props: SystemData) => {
+    const { amount, unit, flow } = props;
+    return <SystemForm
+      uuid={uuid}
+      amount={amount}
+      unit={unit}
+      flow={flow}
+    />
+  }
 
   return (
     <div>
-      <h3>Product System {uuid} with {amount} {unit} of {flow}.</h3>
-      <Form action={`/results/${uuid}`}>
-        <h5>Select the calculation paramaters</h5>
+      <h2>Product System n°{uuid}</h2>
 
-        <label>Impact assessment method:</label>
-        <br />
-
-        <select
-          name='method'
-          title='method'
-        >
-          <option value="">––– Select a method –––</option>
-          <option value="ecoinvent">Ecoinvent</option>
-          <option value="agribalyse">Agribalyse</option>
-          <option value="forbidden">Does not exist</option>
-        </select>
-
-        <br />
-        <br />
-
-        <label>
-          <input
-            type='checkbox'
-            name='regio'
-          /> With regionalization?
-        </label>
-
-        <br />
-        <br />
-
-        <button>Run calculation</button>
-      </Form>
+      <Suspense fallback={<h2>Loading product system parameters...</h2>}>
+        <Await resolve={data}>
+          {renderForm}
+        </Await>
+      </Suspense>
     </div>
   )
 };

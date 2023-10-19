@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 
 export function loader() {
-  return [1, 2, 3, 4];
+  return ["1", "2", "3", "4"];
 };
 
 const SystemsPage = () => {
@@ -17,7 +17,7 @@ const SystemsPage = () => {
           data.map(uuid => {
             return (
               <li key={uuid} style={{ listStyle: "none" }}>
-                <Link to={`/systems/${uuid}`}>
+                <Link to={uuid}>
                   Product system {uuid}
                 </Link>
               </li>

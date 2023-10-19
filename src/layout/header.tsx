@@ -4,19 +4,13 @@ import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header>
+    <header style={{ fontSize: 20 }}>
       <nav>
-        <ul>
-          <li style={{ display: "inline"}}>
-            <NavLink to=".">Home</NavLink>
-          </li>
-          <li style={{ display: "inline"}}>
-            <NavLink to="systems">Product Systems</NavLink>
-          </li>
-          <li style={{ display: "inline"}}>
-            <NavLink to="comparison">Comparison</NavLink>
-          </li>
-        </ul>
+        <NavLink to=".">Home</NavLink>
+        &nbsp;&nbsp;
+        <NavLink to="system">Product Systems</NavLink>
+        &nbsp;&nbsp;
+        <NavLink to="comparison">Comparison</NavLink>
       </nav>
     </header>
   )

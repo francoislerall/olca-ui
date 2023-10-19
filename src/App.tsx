@@ -6,6 +6,8 @@ import SystemPage, { loader as systemLoader } from "./pages/system/system-page";
 import RootLayout from "./layout/root-layout";
 import ResultsPage, { loader as resultsLoader } from "./pages/results/results-page";
 import ComparisonPage from "./pages/comparison/comparison";
+import ErrorComponent from "./components/error";
+import PageNotFound from "./components/page-not-found";
 
 const router = createBrowserRouter([
   {
@@ -15,39 +17,43 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        errorElement: <h1>There was an error in Home!</h1>
+        errorElement: <ErrorComponent />
       },
       {
-        path: "systems",
+        path: "system",
         element: <SystemsPage />,
         loader: systemsLoader,
-        errorElement: <h1>There was an error in Systems!</h1>
+        errorElement: <ErrorComponent />
       },
       {
-        path: "systems/:uuid",
+        path: "system/:uuid",
         element: <SystemPage />,
         loader: systemLoader,
-        errorElement: <h1>There was an error in System!</h1>
+        errorElement: <ErrorComponent />
       },
       {
         path: "comparison",
         element: <ComparisonPage />,
-        errorElement: <h1>There was an error in Comparison!</h1>
+        errorElement: <ErrorComponent />
       },
       {
         path: "results/:uuid",
         element: <ResultsPage />,
         loader: resultsLoader,
-        errorElement: <h1>There was an error in Results!</h1>
+        errorElement: <ErrorComponent />
+      },
+      {
+        path: "*",
+        element: <PageNotFound />,
       },
     ],
   }
-])
+]);
 
 function App() {
   return (
     <RouterProvider router={router} />
   )
-}
+};
 
 export default App;
