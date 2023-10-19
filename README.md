@@ -1,5 +1,7 @@
 # openLCA web UI - Proof of concept
 
+## Description
+
 This project aims at testing and showing that the new features of React Router are worth investigating and implementing.
 
  - `createBrowserRouter` to simply organize the `Route`,
@@ -13,6 +15,11 @@ This project aims at testing and showing that the new features of React Router a
   - users can directly edit the URL,
   - users can easily save the URLs.
   
+## Features
+- layout with a header and a footer as every React app,
+- `/system`: list of product systems. When clicking on an item, it fakely fetches the data with a duration proportional to the indices. N°4 is nower to be found on the server.
+- `/system/:uuid` the corresponding product systems. The choice of the method allow to play with different scenarios.
+- `results` the results page for the corresponding product systems and calculation setup.
 
 ## Available Scripts
 

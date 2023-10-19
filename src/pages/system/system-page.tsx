@@ -2,9 +2,10 @@ import React, { Suspense } from "react";
 import { useParams, useLoaderData, defer, Await, LoaderFunction } from "react-router-dom";
 import SystemForm from "./components/form";
 import { LoaderData } from "../../type";
+import { fakeSystemFetch } from "../../fake-api";
 
 
-type SystemData = {
+export type SystemData = {
   flow: string,
   amount: number,
   unit: string,
@@ -14,17 +15,6 @@ type SystemParams = {
   uuid: string;
 };
 
-const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
-
-const fakeFetch = async (uuid: string) => {
-  await sleep(+uuid * 200);
-  return {
-    flow: "flour",
-    amount: 42.0,
-    unit: "kg",
-  } as SystemData;
-}
-
 export const loader = (async ({ params }) => {
   const { uuid } = params;
 
@@ -32,7 +22,7 @@ export const loader = (async ({ params }) => {
     throw new Error("There is not such a product system.");
   };
 
-  return defer({ data: fakeFetch(uuid || "0") });
+  return defer({ data: fakeSystemFetch(uuid || "0") });
 }) satisfies LoaderFunction;
 
 const SystemPage = () => {
