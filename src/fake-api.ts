@@ -31,7 +31,7 @@ export const fakeResultFetch = async ({ method, regio }: {
   };
 
   if (method === "forbidden") {
-    throw { message: "Method not found." }
+    throw new Error("Method not found.")
   }
 
   return data;

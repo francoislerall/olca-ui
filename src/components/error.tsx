@@ -3,7 +3,6 @@ import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 
 const ErrorComponent = () => {
   const error = useRouteError();
-  console.log(typeof error)
   let errorMessage: string;
 
   if (isRouteErrorResponse(error)) {
