@@ -9,11 +9,11 @@ This project aims at testing and showing that the new features of React Router a
  - `loader` to provide data to the route element before it renders (see `systems-page`),
  - `defer` in `loader` function together with `Await`/`Suspense` (see `system-page`, `results-page`),
  - `Form` from React Router, a quick simple way to make a form without handler and submit function (must have!). This form simply do a fetch with its entries (e.g. `http://localhost:3000/results/2?method=agribalyse&regio=on`). Advantage:
-  - user can share the link with the parameters,
-  - URLs are stored in history, easy to come back to it (previous/next page),
-  - users can refresh the page with the same UI,
-  - users can directly edit the URL,
-  - users can easily save the URLs.
+    - user can share the link with the parameters,
+    - URLs are stored in history, easy to come back to it (previous/next page),
+    - users can refresh the page with the same UI,
+    - users can directly edit the URL,
+    - users can easily save the URLs.
   
 ## Features
 - layout with a header and a footer as every React app,
