@@ -1,10 +1,8 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-
+import { NavLink } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <header style={{ fontSize: 20 }}>
+    <header>
       <nav>
         <NavLink to=".">Home</NavLink>
         &nbsp;&nbsp;
@@ -14,6 +12,6 @@ const Header = () => {
       </nav>
     </header>
   )
-};
+}
 
-export default Header;
+export default Header

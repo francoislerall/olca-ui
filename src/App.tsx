@@ -1,59 +1,60 @@
-import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/home/home";
-import SystemsPage, { loader as systemsLoader } from "./pages/systems/systems-page";
-import SystemPage, { loader as systemLoader } from "./pages/system/system-page";
-import RootLayout from "./layout/root-layout";
-import ResultsPage, { loader as resultsLoader } from "./pages/results/results-page";
-import ComparisonPage from "./pages/comparison/comparison";
-import ErrorComponent from "./components/error";
-import PageNotFound from "./components/page-not-found";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import './App.css'
+import RootLayout from './layout/root-layout'
+import Home from './pages/home/home'
+import SystemsPage from './pages/systems/systems-page'
+import { loader as systemsLoader } from './pages/systems/systems-loader'
+import ErrorComponent from './components/error'
+import SystemPage from './pages/system/system-page'
+import { loader as systemLoader } from './pages/system/system-loader'
+import ComparisonPage from './pages/comparison/comparison'
+import ResultsPage from './pages/results/results-page'
+import { loader as resultsLoader } from './pages/results/results-loader'
+
+import PageNotFound from './pages/not-found/page-not-found'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <RootLayout />,
     children: [
       {
         index: true,
         element: <Home />,
-        errorElement: <ErrorComponent />
       },
       {
-        path: "system",
+        path: 'system',
         element: <SystemsPage />,
         loader: systemsLoader,
-        errorElement: <ErrorComponent />
+        errorElement: <ErrorComponent />,
       },
       {
-        path: "system/:uuid",
+        path: 'system/:uuid',
         element: <SystemPage />,
         loader: systemLoader,
-        errorElement: <ErrorComponent />
+        errorElement: <ErrorComponent />,
       },
       {
-        path: "comparison",
+        path: 'comparison',
         element: <ComparisonPage />,
-        errorElement: <ErrorComponent />
+        errorElement: <ErrorComponent />,
       },
       {
-        path: "results/:uuid",
+        path: 'results/:uuid',
         element: <ResultsPage />,
         loader: resultsLoader,
-        errorElement: <ErrorComponent />
+        errorElement: <ErrorComponent />,
       },
       {
-        path: "*",
+        path: '*',
         element: <PageNotFound />,
       },
     ],
-  }
-]);
+  },
+])
 
 function App() {
-  return (
-    <RouterProvider router={router} />
-  )
-};
+  return <RouterProvider router={router} />
+}
 
-export default App;
+export default App

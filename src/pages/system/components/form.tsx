@@ -1,11 +1,10 @@
-import React from "react";
-import { Form } from "react-router-dom";
+import { Form } from 'react-router-dom'
 
 type SystemFormProps = {
-  uuid: string | undefined,
-  amount: number,
-  unit: string,
-  flow: string,
+  uuid: string | undefined
+  amount: number
+  unit: string
+  flow: string
 }
 
 const SystemForm = ({ uuid, amount, unit, flow }: SystemFormProps) => {
@@ -13,17 +12,17 @@ const SystemForm = ({ uuid, amount, unit, flow }: SystemFormProps) => {
     <div>
       <h3>Reference product:</h3>
       <ul>
-        <li key={flow} style={{ listStyle: "none" }}>
+        <li key={flow} style={{ listStyle: 'none' }}>
           Flow: {flow}
         </li>
-        <li key={amount} style={{ listStyle: "none" }}>
+        <li key={amount} style={{ listStyle: 'none' }}>
           Amount: {amount}
         </li>
-        <li key={unit} style={{ listStyle: "none" }}>
+        <li key={unit} style={{ listStyle: 'none' }}>
           Unit: {unit}
         </li>
       </ul>
-      
+
       <Form action={`/results/${uuid}`}>
         <h3>Select the calculation parameters</h3>
 
@@ -32,10 +31,7 @@ const SystemForm = ({ uuid, amount, unit, flow }: SystemFormProps) => {
         <br />
         <br />
 
-        <select
-          name='method'
-          title='method'
-        >
+        <select name="method" title="method">
           <option value="">––– Select a method –––</option>
           <option value="ecoinvent">Ecoinvent</option>
           <option value="agribalyse">Agribalyse</option>
@@ -47,10 +43,7 @@ const SystemForm = ({ uuid, amount, unit, flow }: SystemFormProps) => {
         <br />
 
         <label>
-          <input
-            type='checkbox'
-            name='regio'
-          /> With regionalization?
+          <input type="checkbox" name="regio" /> With regionalization?
         </label>
 
         <br />
@@ -60,6 +53,6 @@ const SystemForm = ({ uuid, amount, unit, flow }: SystemFormProps) => {
       </Form>
     </div>
   )
-};
+}
 
-export default SystemForm;
+export default SystemForm
